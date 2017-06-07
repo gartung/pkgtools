@@ -3115,7 +3115,7 @@ def installPackage(pkg, scheduler):
   if not checkCanInstallRpm (pkg):
     raise RpmBuildFailed (pkg)
   scheduler.log("Trying to install the rpm package %s just built." % pkg.pkgName ())
-  if bootstrap:
+  if pkg.options.bootstrap:
     scheduler.log("Checking local path dependency for rpm package %s just build." % pkg.pkgName ())
     rpm_env = rpmEnvironmentScript
     command = "%s ; rpm  -qp --requires %s | cut -d\  -f1" % (rpm_env, pkg.rpmLocation())
