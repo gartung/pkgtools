@@ -2951,7 +2951,7 @@ def installRpm (pkg, bootstrap):
         tmpInstall  = join(tmpDir, pkg.installDir.strip(sep))
         rpmLoc  = pkg.rpmLocation()
         command  = "mkdir -p %(tmpInstall)s; rm -rf %(tmpInstall)s; ln -s %(workDir)s %(tmpInstall)s;"
-        command += "cd %(tmpDir)s; rpm2cpio %(rpmLoc)s | cpio -idmv; cd %(workDir)s; rm -rf %(tmpDir)s"
+        command += "cd %(tmpDir)s; rpm2cpio %(rpmLoc)s | cpio --insecure -idmv; cd %(workDir)s; rm -rf %(tmpDir)s"
         command = command % locals()
         error, output = getstatusoutput(command)
         if not error:
