@@ -66,16 +66,6 @@ do
   esac
 done
 
-case ${ARCH} in
-  osx*)
-    # Darwin is not RPM based, explicitly go for guessing the triplet
-    CONFIG_BUILD=guess
-    ;;
-  *)
-    # Assume Linux distro is RPM based and fetch triplet from RPM
-    CONFIG_BUILD=auto
-    ;;
-esac
 
 set -e
 
@@ -148,7 +138,7 @@ CONFIG_HOST=$CONFIG_BUILD
 # Fetch the sources.
 curl -k -s -S https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.9.5/src/nspr-4.9.5.tar.gz | tar xvz
 curl -k -s -S http://rpm5.org/files/popt/popt-1.16.tar.gz | tar xvz
-[ ! $IS_ONLINE ] && curl -k -s -S http://zlib.net/zlib-1.2.8.tar.gz | tar xvz
+[ ! $IS_ONLINE ] && curl -k -s -S http://zlib.net/fossils/zlib-1.2.8.tar.gz | tar xvz
 curl -k -s -S https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_14_3_RTM/src/nss-3.14.3.tar.gz | tar xvz
 curl -k -s -S ftp://ftp.fu-berlin.de/unix/tools/file/file-5.13.tar.gz | tar xvz
 curl -k -s -S http://download.oracle.com/berkeley-db/db-4.5.20.tar.gz | tar xvz
